@@ -1,6 +1,9 @@
 # Rotate Array
 # https://leetcode.com/problems/rotate-array/description/
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+
 
 class Solution:
     def reverse(self, nums: List[int], start: int, end: int) -> None:
