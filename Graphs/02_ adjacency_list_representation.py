@@ -45,6 +45,32 @@ class Graph:
         print(f"Vertex {vertex} not found")
         return False
 
+    def bfs(self, start_vertex):
+        visited = {}
+        queue = [start_vertex]
+        result = []
+        while queue:
+            current_vertex = queue.pop(0)
+            # print(f"current vertex is: {current_vertex}")
+            if current_vertex not in visited:
+                visited[current_vertex] = True
+                result.append(current_vertex)
+                queue.extend(self.adjacency_list[current_vertex])
+        print(f"result is: {result}")
+
+    def dfs(self, start_vertex):
+        visited = {}
+        stack = [start_vertex]
+        result = []
+        while stack:
+            current_vertex = stack.pop()
+            # print(f"current vertex is: {current_vertex}")
+            if current_vertex not in visited:
+                visited[current_vertex] = True
+                result.append(current_vertex)
+                stack.extend(self.adjacency_list[current_vertex])
+        print(f"result is: {result}")
+
     def print_graph(self):
         for vertex in self.adjacency_list:
             print(f"{vertex} : {self.adjacency_list[vertex]}")
@@ -73,12 +99,17 @@ graph1.print_graph()
 graph1.remove_vertex("D")
 graph1.print_graph()
 
+print("BFS")
+graph1.bfs("A")
 
-# Graph class with error
-print("Graph class with error")
-graph2 = Graph()
-graph2.add_vertex("A")
-# graph.add_vertex("B")
-graph2.print_graph()
-graph2.add_edges("A", "B")
-graph2.print_graph()
+print("DFS")
+graph1.dfs("A")
+
+# # Graph class with error
+# print("Graph class with error")
+# graph2 = Graph()
+# graph2.add_vertex("A")
+# # graph.add_vertex("B")
+# graph2.print_graph()
+# graph2.add_edges("A", "B")
+# graph2.print_graph()
