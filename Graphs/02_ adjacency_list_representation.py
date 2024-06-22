@@ -58,6 +58,19 @@ class Graph:
                 queue.extend(self.adjacency_list[current_vertex])
         print(f"result is: {result}")
 
+    def dfs(self, start_vertex):
+        visited = {}
+        stack = [start_vertex]
+        result = []
+        while stack:
+            current_vertex = stack.pop()
+            # print(f"current vertex is: {current_vertex}")
+            if current_vertex not in visited:
+                visited[current_vertex] = True
+                result.append(current_vertex)
+                stack.extend(self.adjacency_list[current_vertex])
+        print(f"result is: {result}")
+
     def print_graph(self):
         for vertex in self.adjacency_list:
             print(f"{vertex} : {self.adjacency_list[vertex]}")
@@ -88,6 +101,9 @@ graph1.print_graph()
 
 print("BFS")
 graph1.bfs("A")
+
+print("DFS")
+graph1.dfs("A")
 
 # # Graph class with error
 # print("Graph class with error")
